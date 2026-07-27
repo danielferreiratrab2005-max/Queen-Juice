@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Queen Juice brand palette */
+  --color-qj-black: var(--qj-black);
+  --color-qj-black-2: var(--qj-black-2);
+  --color-qj-gold: var(--qj-gold);
+  --color-qj-gold-deep: var(--qj-gold-deep);
+  --color-qj-purple: var(--qj-purple);
+  --color-qj-magenta: var(--qj-magenta);
+  --color-qj-cream: var(--qj-cream);
+  --color-qj-muted: var(--qj-muted);
+  --color-qj-mango: var(--qj-mango);
+  --color-qj-maracuja: var(--qj-maracuja);
+
+  --font-display: "Playfair Display", serif;
+  --font-brand: "Cinzel", serif;
+  --font-body: "Poppins", sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --qj-black: #0b0a0d;
+  --qj-black-2: #141017;
+  --qj-gold: #e7c36b;
+  --qj-gold-deep: #c9a24b;
+  --qj-purple: #6d2e7a;
+  --qj-magenta: #c2287d;
+  --qj-cream: #f5eedd;
+  --qj-muted: #b7adc2;
+  --qj-mango: #f5a623;
+  --qj-maracuja: #f2c438;
+
+  --background: var(--qj-black);
+  --foreground: var(--qj-cream);
+  --card: var(--qj-black-2);
+  --card-foreground: var(--qj-cream);
+  --popover: var(--qj-black-2);
+  --popover-foreground: var(--qj-cream);
+  --primary: var(--qj-gold);
+  --primary-foreground: #1a1206;
+  --secondary: #241a2b;
+  --secondary-foreground: var(--qj-cream);
+  --muted: #221b29;
+  --muted-foreground: var(--qj-muted);
+  --accent: var(--qj-purple);
+  --accent-foreground: var(--qj-cream);
+  --destructive: oklch(0.62 0.21 25);
+  --border: rgba(231, 195, 107, 0.16);
+  --input: rgba(231, 195, 107, 0.22);
+  --ring: var(--qj-gold);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--qj-gold);
+    color: #1a1206;
+  }
+}
+
+@layer utilities {
+  .font-brand {
+    font-family: var(--font-brand);
+  }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #f3d98c 0%, #e7c36b 40%, #c9a24b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #f3d98c 0%, #e7c36b 45%, #c9a24b 100%);
+  }
+  .border-gold-soft {
+    border: 1px solid rgba(231, 195, 107, 0.25);
+  }
+  .royal-glow {
+    box-shadow:
+      0 0 0 1px rgba(231, 195, 107, 0.15),
+      0 24px 60px -20px rgba(109, 46, 122, 0.55);
+  }
+  .hero-radial {
+    background:
+      radial-gradient(
+        60% 50% at 50% 0%,
+        rgba(109, 46, 122, 0.45) 0%,
+        rgba(109, 46, 122, 0) 70%
+      ),
+      radial-gradient(
+        40% 30% at 80% 20%,
+        rgba(231, 195, 107, 0.12) 0%,
+        rgba(231, 195, 107, 0) 60%
+      ),
+      var(--qj-black);
+  }
+  .noise-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+}
